@@ -14,7 +14,7 @@ import javax.swing.Timer;
 
 public class Level extends JPanel implements ActionListener{
 	
-	private Image fundo1;// , fundoF
+	private Image fundo1;
 	private Player player;
 	private Timer timer; 
 	
@@ -22,12 +22,9 @@ public class Level extends JPanel implements ActionListener{
 		setFocusable(true);
 		setDoubleBuffered(true);
 		
-		ImageIcon ref = new ImageIcon("res\\B.jpg");
-		
+		ImageIcon ref = new ImageIcon("res\\blackground.jpg");	
 		fundo1 = ref.getImage();
-		
-		//Image fundoF = fundo1.getScaledInstance(900, 550, Image.SCALE_DEFAULT);
-		
+				
 		player = new Player();
 		player.load();
 		
@@ -40,25 +37,27 @@ public class Level extends JPanel implements ActionListener{
 	public void paint(Graphics g) {
 		Graphics2D graphics = (Graphics2D) g;
 		
-		graphics.drawImage(player.getPlayer(), player.getX(), player.getY(), this);
 		graphics.drawImage(fundo1, 0, 0, null);
+		//graphics.drawImage(player.getPlayer(), player.getX(), player.getY(), this);
+		
 		g.dispose();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		player.update();
-		repaint();	
+		repaint();
 	}
 	
 	private class TecladoAdapter extends KeyAdapter{
-		
-		public void KeyPressed(KeyEvent e) {
+		@Override
+		public void keyPressed(KeyEvent e) {
 			player.KeyPressed(e);
+
 		}
-		
-		public void KeyReleased(KeyEvent e) {
-			player.KeyReleased(e);
+		@Override
+		public void keyReleased(KeyEvent e) {
+			player.KeyRelease(e);
 		}
 	}
 }

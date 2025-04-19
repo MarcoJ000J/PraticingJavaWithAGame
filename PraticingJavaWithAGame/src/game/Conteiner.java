@@ -7,7 +7,7 @@ import gameModel.Level;
 public class Conteiner extends JFrame{
 	
 	public Conteiner() {
-		setSize(640, 400);
+		setSize(1025, 728);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
